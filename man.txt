@@ -1,4 +1,0 @@
-This is commit 2
-
-
-This is to test the Git push
