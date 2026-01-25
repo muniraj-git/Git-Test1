@@ -1,0 +1,41 @@
+pipeline pipeline{
+    agent any
+    stages{
+        stage('new command'){
+            steps{
+                sh '''
+                uptime 
+                date 
+                echo "hello world..."
+                '''
+            }
+        }
+        stage('pooja'){
+            steps{
+                sh '''
+                uptime 
+                date 
+                echo "hello world...this is pooja"
+                '''
+            }
+        }
+        stage('muni'){
+            steps{
+                sh '''
+                uptime 
+                date 
+                echo "hello world...this is muni"
+                '''
+            }
+        }
+        stage('raj'){
+            steps{
+                sh '''
+                uptime 
+                date 
+                echo "hello world...this is raj"
+                '''
+            }
+        }
+    }
+}
