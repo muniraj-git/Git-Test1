@@ -37,5 +37,14 @@ pipeline{
                 '''
             }
         }
+        stage('murugesh'){
+            steps{
+                sh '''
+                uptime 
+                date 
+                echo "hello world...this is murugesh"
+                '''
+            }
+        }
     }
 }
