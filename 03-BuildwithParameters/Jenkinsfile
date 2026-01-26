@@ -1,0 +1,15 @@
+pipeline{
+    agent any
+
+    Parameters{
+        string(name: 'ENV',defaultValue: 'Prod',description: 'Environment to deploy')
+    }
+    
+    stages{
+        stage('Parameters'){
+            step{
+                echo "Deploying to ${params.ENV} environment"
+            }
+        }
+    }
+}
