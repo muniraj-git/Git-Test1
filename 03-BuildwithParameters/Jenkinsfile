@@ -6,8 +6,8 @@ pipeline{
     }
     
     stages{
-        stage('Parameters'){
-            step{
+        stage('build'){
+            steps{
                 echo "Deploying to ${params.ENV} environment"
             }
         }
