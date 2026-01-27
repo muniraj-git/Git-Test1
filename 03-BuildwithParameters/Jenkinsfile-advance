@@ -17,8 +17,7 @@ pipeline{
                // adding the logc to switch environment
 
                script {
-
-                switch $params(params.ENV) {
+                     switch(params.ENV) {
                     case 'DEV':
                     echo "Running in dev environment.."
                     // sh 'deploy-dev.sh'
