@@ -1,0 +1,47 @@
+pipeline{
+    agent any
+
+    parameters{
+        choice(
+            name: 'ENV',
+            choices: ['DEV', 'UAT', 'PROD', 'TEST'],
+            description: 'select the deployment environment'
+        )
+    }
+    
+    stages{
+        stage('build'){
+            steps{
+                echo "Deploying to ${params.ENV} environment"
+
+               // adding the logc to switch environment
+
+               script {
+
+                switch $params(params.ENV) {
+                    case 'DEV':
+                    echo "Running in dev environment.."
+                    // sh 'deploy-dev.sh'
+                    break
+                    case 'UAT':
+                    echo "Running in UAT environment.."
+                    // sh 'deploy-uat.sh'
+                    break
+                    case 'DEV':
+                    echo "Running in PROD environment.."
+                    // sh 'deploy-prod.sh'
+                    break
+                    case 'DEV':
+                    echo "Running in TEST environment.."
+                    // sh 'deploy-test.sh'
+                    break
+                    default :
+                    echo "invalid env selection"
+
+                }
+
+               }
+            }
+        }
+    }
+}
