@@ -1,0 +1,1946 @@
+Version Control System:   * A version control system is a tool/software that helps developers track manage and control the changes to source code or files over time 
+It Allows multiple developers to collaborate, record every changes and roll back to the previous versions if needed 
+
+
+Environments: 
+
+Testing
+Production 
+Pre-production 
+Validation 
+UAT
+Development 
+Staging 
+QA
+
+
+If a code needs to be used across multiple Environment we use something called as branching and merging strategy 
+
+
+Types of VCS:
+
+Local 
+Centralised 
+Distributed VCS    Local VCS: Excel, Quip, Numbers   Centralised: Like a shared devices in Windows SVC, SVN and Perforce are the example tools  Distributed: GIT, bitbucket, bazar and mercurial 
+
+
+GIT: 
+
+Also called as Global information Tracker
+Ubuntu has git installed in it 
+Any given folder in the server can be changed to a git repo 
+
+Exercise 
+
+login to the instance 
+Create a folder 
+To change the folder to a git repo we use the command after cd into the folder 
+Git init : Means Git initialisation 
+If we do ls -a we just get . .. dots in it before using the command 
+But after we initialisation we can see .git folder in it 
+Now we will create a file and check the status of it nothing 
+We use the command Git commit -m “Command”
+It will ask to add the user mail address and Name to track it down 
+Once done we can check the Statius 
+Using the command git log -p we will be able to check the log like who created and the rest 
+
+
+
+Explanation: 
+
+Creating a Folder and to change the folder to a GIT repo we use the command git init.
+Then from there we create a file and check the status we see the message that there is and untracked file and name of it 
+Now we need to use the command git add filename.txt to add the file 
+Once done adding the file will go to the staging/Indexing area
+Now we need to move the file to the repo status or area only then we can use it to track it and to do that we use the command git commit -m “Command” .
+Now we can check the git log using the command git log, it will show one git log with the mentioned command.
+Working Area > Index/Staging area > Repo. This is the tracking of file in Git 
+When Change the folder to Git folder it changes to Working area then when Git add is made it goes to index area then when we do Git commit it comes to repo 
+
+
+Git Commands 
+
+To change the folder to Git: git init
+To add the file to index area : git add file name or git add . Or git add *
+To move it to repo: git commit -m
+To check the log: git log
+To check the details: git log -p
+To check the repo names: git log —oneline
+To check the difference made: git diff commitid1 commitid2
+To remove a file from index area: git restore —staged filename 
+
+Git Hub:
+
+Git hub is the online version where the folders of git can be stored in cloud 
+To start it we need to login to Github and create a Repository 
+Then create one in public 
+Once done we will have a list of command we need use that in our terminal to add it to the git repo
+Now back to terminal we need to use a command git remote -v this will show if there is a git hub already connected to it 
+2 command to be used one is Git brach -m main then the remote add origin with the link
+Now if we use the command git remote -v we will be able to see 2 origin 
+Now enter the command git push -u origin main this will ask for user name password 
+User name is git user name and password is the token we need to get it from the Github 
+How to get this token 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 
+Go to Setting > Developer Setting > generate classic token > check in all the boxes and copy it and paste it in the password option in the terminal 
+Now all the files in the folder is visible 
+Now to Test the Git Push we need to follow the below command 
+Open the vi editor for a file and make some changes 
+Now add and commit the folder, checking the status it will mention that the commit is one step ahead of the origin which means that the latest edit is not part of the Git hub folder 
+Now to to do that it will ask to mention git push that moment you do that you can see that in the folder online  Exercise:    root@muni:~/pooja# vi man.txt 
+root@muni:~/pooja# git add .
+root@muni:~/pooja# git commit -m "testing the git push"
+[main 161a0be] testing the git push
+ 1 file changed, 2 insertions(+)
+root@muni:~/pooja# git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+root@muni:~/pooja# git push
+Username for 'https://github.com': muniraj-git  
+Password for 'https://muniraj-git@github.com': 
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 366 bytes | 366.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/muniraj-git/Git-Test1.git
+   d56b352..161a0be  main -> main
+root@muni:~/pooja# 
+
+
+Now if we check the folder on line we can see the changes made it being pushed as well 
+In the Git hub we can check history the codes and we can make the changes and all of it 
+
+
+
+Now we can access this Git hub if we can have access followed the exercise to get it done
+Came to Root folder 
+Now using the command Git clone followed the link mentioned under https paste it 
+Then we can see a folder named as your GitHub name using ls
+Now we need to go to that folder 
+Create a file add and commit it using git push we can see that file in the git hub 
+
+root@muni:~# git clone https://github.com/muniraj-git/Git-Test1.git
+Cloning into 'Git-Test1'...
+remote: Enumerating objects: 28, done.
+remote: Counting objects: 100% (28/28), done.
+remote: Compressing objects: 100% (16/16), done.
+remote: Total 28 (delta 2), reused 24 (delta 1), pack-reused 0 (from 0)
+Receiving objects: 100% (28/28), done.
+Resolving deltas: 100% (2/2), done.
+root@muni:~# ls
+Git-Test1  pooja  snap
+root@muni:~# cd Git-Test1/
+root@muni:~/Git-Test1# ls
+man.txt  muni1.txt  sample.txt  sample1.txt
+root@muni:~/Git-Test1# touch git_clone.txt
+root@muni:~/Git-Test1# git add .
+root@muni:~/Git-Test1# git commit -m "Added a file using the terminal"
+[main 1409cf7] Added a file using the terminal
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 git_clone.txt
+root@muni:~/Git-Test1# git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+root@muni:~/Git-Test1# git push
+Username for 'https://github.com': muniraj-git
+Password for 'https://muniraj-git@github.com': 
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 284 bytes | 284.00 KiB/s, done.
+Total 3 (delta 1), reused 1 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/muniraj-git/Git-Test1.git
+   8b2185f..1409cf7  main -> main
+
+
+
+
+Now to clone it using the SSH command 
+Not directly as it is with https we need to add the ssh key first so to do that use this command ssh-keygen -t rsa -b 2048
+
+root@muni:~# ls -a
+.  ..  .bashrc  .gitconfig  .lesshst  .profile  .ssh  .viminfo  pooja  snap
+root@muni:~# cd .ssh/
+root@muni:~/.ssh# ssh-keygen -t rsa -b 2048
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /root/.ssh/id_rsa
+Your public key has been saved in /root/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:0rom/yvZZBccSUxafzRId/F+TDnkIe2glLi2Rh0sAkw root@muni
+The key's randomart image is:
++---[RSA 2048]----+
+|    oE.  +*ooo=+o|
+|     . . =+*.++++|
+|        o.=.+ ++o|
+|       . +oo . =.|
+|      . S ..    +|
+|       ooo.     .|
+|      .=..       |
+|    . +..        |
+|     +ooo.       |
++——[SHA256]-----+
+
+Now the key will be added 
+Now if we ls into the .ssh folder we will be able to see id_rsa.pub this file in the folder which is public key 
+Now cat the file and copy it and go to git hub open the settings option you will find SSH and GPG key open it then add key. Mention the details and create the key 
+Now use the same ssh link mentioned in the code drop down using that we should be able to clone the git hub folder 
+Now ls we can see the got folder 
+Now we need to create a new folder that can be done using this command : for a in linux git shell jenkins docker k8 terraform; do mkdir $a && touch $a/Readme.md; done 
+
+
+
+This is the command will create all the folders required and mention above now we need to add commit and git push we can see all the folders in the git hub
+Note: if we use the SSH instead of Https during the git push it will not ask for the username and password 
+
+
+Brach in GIT HUB: 
+
+What is Branch: By default we have Main/Master 
+Brach is kind of a container where we can store the code, uses of it is we can clone the codes and we can use it based on its requirement. Like we can have code and make changes and store one branch for Development, Testing , Production.
+How we use it on realtime bases when we have a app we have all the codes in main and lets say we need to make some edits to the app we will create a branch and will make the edit there so we can have a clear idea without messing up the main code in the main branch 
+To add a new brach the command is git branch branch-name , this will create a new branch 
+Now to check the branches we have we need to use the command git branch 
+To check the hidden ones git branch -a
+To switch the brach we use the command git checkout branch_name / git switch brach_name 
+To create a brach we need to use the command git brach branch_name
+To Push the branch the use the command git push --set-upstream origin branch_name
+You can create a brach in the UI as well mentioning which one should be the source for this new brach 
+Once done you can make the changes but to see that in the terminal you need to use the command git pull.
+Next Class
+
+
+We need to streamline the Branches based on the requirements (Branch Fix strategy)
+Usually we have departments(Environment) like Dev, PreProd, Production
+So usually when we need any changes need to be done we make the changes in Dev first then once working will push to pre prod if its good there then push it to Prod let say we see an issue there then we will create another branch lets say hot fix and merge it to prod and test there and bring it back to Production 
+So basically we do the strategy based on the requirement and get it done, so same codes in diff environments and use it and change it based on the requirement 
+Now we will have an example 
+
+Login to the Terminal and connected to Git using the SSH method
+Once done cd into the git folder 
+Then use the command got checkout -b production this will create a new branch and will checkout to the new branch so basically one command for 2 actions 
+Now delete all the files using rm -rf * and create a new file using touch index.html
+Add and commit then push and add the brach as well 
+
+Exercise 
+
+Login to terminal 
+Now connect to GIT using the SSH option as mentioned earlier using the token 
+Then create a new branch named production using the command git brach production 
+Switch to the new branch using the command got checkout production 
+Now create a user name and password using the command git config —global user.name “muni”
+Git config —global user.email “munirajwork@gmail.com”
+This helps to check who is making the commit 
+Now add and commit it so it will ask to add the brach as well so use git push --set-upstream origin production.
+Once completed open the file and enter the codes we get from myv3school link https://www.w3schools.com/howto/howto_css_login_form.asp
+Enter the CSS command first ensure its in between <style></style>
+Then enter the html code and save the file 
+Now git add and commit and git push command will be updated 
+Now to check the website in ui use the command root@muni:~/Git-Test1# apt-get install apache2
+Followed by root@muni:~/Git-Test1# systemctl enable apache2
+Followed by root@muni:~/Git-Test1# systemctl start apache2
+Followed by root@muni:~/Git-Test1# cp index.html /var/www/html/
+Go to AWS connect ec2 instance connect and copy the public ip and paste it then the ui visible
+Now we need to enhance the code so we need a brach from the Production branch 
+We need to add an addition login icon to it like what’s app and telegram
+So we create a new brach from the production branch git checkout -b development, Now Git add commit and Push it so that the brach is added
+We can see a brach called as development in git hub, since its a collaborative work we need to add a feature but need to have a brach for individual based on the requirement so we are going to create another brach with the name of the person and the ticket corresponding to it using the command root@muni:~/Git-Test1# git checkout -b muniraj-JIRA-123
+Now that its created we need add the feature required go to the html file copy and using chat gpt mention we need a telegram and what’s app button 
+Open the index file, delete the existing command and paste the new one hint to delete all the lines use the command :1$d
+Now Git add, commit and push then branch is added 
+Now paste the new code in root@muni:~/Git-Test1# cp index.html /var/www/html/
+Now test it we can see the new updated page 
+
+Now that its done we will proceed with how to push the changes from Changed brach to development and then to production
+
+Now go to Pull request in Git Hub 
+Create a new pull request > The Base has to be the brach to which the code has to be pushed and the compare is the one with the latest code 
+And click pull request
+Create and Assign to yourself and then Merge Pull request.
+Once done back to terminal 
+Switch the branch to Development 
+Now from there you can copy the index file to HTML root@muni:~/Git-Test1# cp index.html /var/www/html/
+Now type in git pull and then refresh the page you can see the new page refresh with new latest updates
+Now create another pull request where the base is Production and then the source of code is Development 
+Now back to terminal and then same exercise the page will be back with base code 
+Copy the file to HTML folder, then git pull then refresh you can see the latest update 
+
+
+Git cherry-pick commiti-d : This is used to copy the commit ID from one brach to another one 
+
+Git stash : if you need to scratch out the latest changes made in local repo means in terminal it will do it 
+
+Git stash pop : will undo if there stash done 
+
+
+
+
+Note: When you make any changes to a file in Github and same and open the same file in terminal and make changes to the same file and try to push it, it will not accept the changes. This is called Merged Conflict
+
+
+
+How to fix it: This is where we use the pull command once we do it we can see 3 options 
+
+Merge 
+Rebase 
+Fast-forward only 
+
+Use the merge command line so both the changes will reflect in the terminal and we can choose what we need and discard the other
+
+Difference bw Git pull and fetch: Pull will make the difference but the Fetch will help you to compare the difference made you can use this options 
+
+Git Fork: This is an option where can copy the content of a repo into our repo based on the requirement. Simple difference bw forking and cloning is in clone we use the content on the repo in the same user but here we copy the content into our repo 
+
+Doubt: Cherry Pick is not working, and a clear diff about Git fetch 
+
+Things to know: What is Rebase, Reverted rebase, cherry pick, stash , stash-pop, how to resolve the conflict
+
+
+
+Jenkins: 
+
+Now first with the installation
+We need to enter the installation scrip in the git folder and then run it 
+First in the terminal clone the git hub
+Then open a new branch and a folder called as script 
+Then a file named Jenkins-installer.sh
+Then using the link https://www.jenkins.io/doc/book/installing/linux/#debianubuntu you can get the command for installation of jenkins   File content: 
+ #!/bin/bash
+sudo apt update -y
+sudo apt install fontconfig openjdk-21-jre -y
+sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
+echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt update -y
+sudo apt install jenkins -y
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins 
+Once done save the file git add commit and git push 
+Now its pushed to Git 
+
+Commands:   root@jenkins-server:~/Git-Test1# git checkout -b jenkins
+root@jenkins-server:~/Git-Test1# rm -rf *
+root@jenkins-server:~/Git-Test1# mkdir scripts
+root@jenkins-server:~/Git-Test1# cd scripts/
+root@jenkins-server:~/Git-Test1/scripts# touch jenkins.sh
+root@jenkins-server:~/Git-Test1/scripts# vi jenkins.sh 
+root@jenkins-server:~/Git-Test1/scripts# git add .
+root@jenkins-server:~/Git-Test1/scripts# git commit -m "created the jenkins installation file”
+root@jenkins-server:~/Git-Test1/scripts# git push --set-upstream origin jenkins
+   Now to install it in a a server:  
+Now open a new instance ensure its above t3 micro use cx large 
+And now launch the instance 
+Now sudo su -
+And clone the git using the http link and prefix It with -b jenkins (This will go to the branch directly)
+Now open the git folder then cd to scripts then change the permission of the folder to 777
+And then run the file ./jenkins.sh and the installation is completed
+Command for installation: 
+
+root@jenkins:~# git clone https://github.com/muniraj-git/Git-Test1.git -b jenkins
+root@jenkins:~# cd Git-Test1/
+root@jenkins:~/Git-Test1# cd scripts/
+root@jenkins:~/Git-Test1/scripts# ls
+jenkins.sh
+root@jenkins:~/Git-Test1/scripts# chmod 777 jenkins.sh
+root@jenkins:~/Git-Test1/scripts# ./jenkins.sh 
+
+Now since the installation is completed we need to open the jenkins so by default jenkins will be running in the port 8080 of the server 
+So copy the public IP from the Instance dashboard and prefix it with :8080 to launch jenkins 
+Note Ensure in the inbound rules you define a ip for jenkins just like http https and ssh another one for Jenkins not just one ip lets say give a range line 8000-10000 something like this 
+Now its done open the jenkins page with the ip address as mentioned above 
+You will find a page to unlock to jenkins there you will find a path /var/lib/jenkins/secrets/initialAdminPassword to get the password cat and paste the path in terminal once done you will find the password paste it and you are good to go 
+Go with the 1s options in plugin and do not give the user name and password because it will over ride and hard to retrieve 
+
+
+Jenkins intro: 
+
+Its a Java based app and open source 
+And its rich of plugins so we can use it to connect to all the apps like git , doc , k8 , mail , terraform etc. Its used to connect to all the apps here 
+We can use it for whole CI/CD pipelines 
+So lets say when we need to use Git in Jenkins we need to install the plugins for Git, similar to other apps like mail and so 
+To check the plugins we need to go to setting > Plugin > you can see the status of the plugins here 
+
+UI in jenkins: 
+
+New Item and built history: it will show the new pipeline and new builds 
+Build Executor: Lets say 1 executor is like 1 cpu ex: if we need to download a file for 100Gb we can download it in 20 mins if we do it as splits in 10 and download it will take 10 mins bcse behind all the splits we will have 1 executor which will download it 
+
+
+
+Now We will create a project: 
+
+
+New Item > Enter an Item name > Free style project 
+In the general column under Build Steps > Add build step > Execute Shell
+In commands fill : #!/bin/bash echo "This is my first jenkins job" date uptime
+Now apply and save
+Now click on build now you can see the build coming down to check what is been executed click on the build and > Console output 
+Tis is the output we can see  Started by user admin
+
+Running as SYSTEM
+Building in workspace /var/lib/jenkins/workspace/Test
+[Test] $ /bin/bash /tmp/jenkins12704469697081535783.sh
+This is my first jenkins job
+Fri Jan 23 14:42:36 UTC 2026
+ 14:42:36 up  1:06,  1 user,  load average: 0.34, 0.09, 0.03
+Finished: SUCCESS
+
+Now Next activity 
+
+Create a new Jenkins job as test-1 once done we need click on > Build Now
+Now we need will see the options 
+Click on Configure > 
+General: Description: we will provide the details like in which environment and tools used to build it 
+Discard Old Build: its also called as Number of builds so basically one Run = 1 Build 
+Now This is useful for memory and ram consumption so basically when there are many builds stored the corresponding ram is used so using the Discard Old build option we can define how many build to be stored so we can optimise it accordingly 
+We have options like number of days and number of builds we can use the computations accordingly so that we can use it accordingly 
+Below we have git hub project but we do not use it we will use the Column Source code Management and option Git  
+Throttle Builds: The time between the execution of  One build to another one 
+Execute concurrent builds if necessary: Ex we schedule a job to run every hour and say a build was triggered at 7 and now another one is suppose to run at 8 for some reason If the job at 7 is not completed and by 8 the next build starts the build will fail to avoid it we will enable the Execute concurrent builds. So both the jobs runs parallel.
+Source Code Management: You can enter the Git repository https link and no need for credentials if its a public repo 
+You need to enter the name if the branch and apply and save 
+Once done click on Build now, now go to console output you can see the changes made the clone codes related to git clone 
+Workspace: This is the place where all the git file and data is stored
+
+Now to check the original path where data is located in jenkins we need to go to terminal 
+Then type this path root@jenkins-server:~# cd /var/lib/jenkins/ . This is the home directory of Jenkins 
+
+Activity: we will see how Jenkins are Git can parallel work so These are the things done followed by command 
+
+From Git folder come back to the Root 
+Go to the Jenkins Home Directory path
+List the content you will see the workspace folder 
+Cd into workspace folder and check the list you will find the files in main branch (Note: because we use the main branch when sync in the repo earlier so files in main will be visible)
+Cat a text file named muni1.txt and see the output 
+Now open the git hub and to branch Main and edit the file mention “This is visible in Jenkins”
+Now save the commit 
+Open Jenkins and click Build now 
+Now cat the same file you will be able to see the edit is made
+
+root@jenkins-server:~/Git-Test1/scripts# cd
+root@jenkins-server:~# cd /var/lib/jenkins/
+root@jenkins-server:/var/lib/jenkins# ls
+config.xml                      jenkins.install.InstallUtil.lastExecVersion     jobs              queue.xml                 updates
+hudson.model.UpdateCenter.xml   jenkins.install.UpgradeWizard.state             logs              secret.key                userContent
+hudson.plugins.git.GitTool.xml  jenkins.model.JenkinsLocationConfiguration.xml  nodeMonitors.xml  secret.key.not-so-secret  users
+identity.key.enc                jenkins.telemetry.Correlator.xml                plugins           secrets                   workspace
+root@jenkins-server:/var/lib/jenkins# cd workspace/
+root@jenkins-server:/var/lib/jenkins/workspace# ls
+test-2
+root@jenkins-server:/var/lib/jenkins/workspace# cd test-2/
+root@jenkins-server:/var/lib/jenkins/workspace/test-2# ls
+docker  git  git_clone.txt  index.html  jenkins  k8  linux  man.txt  muni1.txt  sample.txt  sample1.txt  scripts  shell  terraform
+root@jenkins-server:/var/lib/jenkins/workspace/test-2# cat muni1.txt 
+Hope you are doing good
+
+root@jenkins-server:/var/lib/jenkins/workspace/test-2# cat muni1.txt 
+Hope you are doing good
+
+This is visible in Jenkins
+
+**********************
+
+How to login to a Private repository 
+
+Now change the Git to private repo 
+Settings > Danger Zone > Change the visibility to Private save give yes to all Done 
+
+Now go to Jenkins and apply and change > Build now. Now you can see the build it failed checking the reason in > Console Output it will be because of authentication failed.
+
+
+
+Now how to add the user name and password: 
+
+Just like how we add a private git using the git clone https link and mention the user name and password and the password is token setting > passwords > Tokens and regenerate the token and paste it, its similar to it 
+
+	
+Click on tools/manage Jenkins on the top > Security > Credentials > Click on Global > Add Credentials 
+
+Kind > User name and password > scope > default the one already there > User name > muniraj-git > Password > Token from git > description as per your requirement 
+
+Once done go to test2 > configure > under the credentials you will get the name in dropdown use it > apply and save > and Build now > without error build is successful
+
+
+
+Triggers: 
+
+When we make changes in the git we come back and do it manually but that’s not how its done so we use triggers here 
+Its similar to Cron jobs in Linux 
+
+We have 5 types 
+
+Trigger builds remotely (e.g., from scripts): From scrips if we use curl command and post the API and build the job we use this trigger 
+
+Build after other projects are built: Suppose we have 1 project ex test-1 its upstream and test-2 is downstream job means only after test 1 is built it will trigger test-2 so test-1 will be primary that execution will trigger test-2. So first upstream will execute that will execute downstream job 
+
+Build periodically: In cron we set * * * * * this means trigger the jobs every one minute similarly irrespective of the changes in the git file it will run on the iteration set
+
+GitHub hook trigger for GITScm polling: Also called as web hooks. Similar to Poll SCM but difference is Once there is a change in git hub it directly run the build will not wait for that minute time difference.
+
+Poll SCM: If we make any changes in Github this will try to fetch the info from Git if and only if there is any changes in Git file it will execute the jobs it not it will not execute the Build. So it checks every 1 minute and if there is a different it triggers the build of no no build 
+
+
+
+Activity: 
+
+
+Build periodically: We are testing this first its the same as Linux. Give 5 starts * * * * * apply and save it. So now we have scheduled it to trigger every 1 min no matter what happens it keeps triggering 
+
+
+Poll SCM: Start a job with Git repo and trigger the Job making the same * * * * * but you will see just one job which was automatically triggered and then it do not happen to trigger any other. Now go to Git and make some changes to the file and commit it now you can see the jobs triggers in the next minute and stops and no builds after that 
+GitHub hook trigger for GITScm polling: Webhooks, unlike other jobs just saving will not help we need to first configure it. How to do it is go to Git > Settings > Webhooks> add web hook > In the payload url type in the url of the jenkins followed by github-webhook not the job name and other things
+Eg: http://3.235.1.169:8080/github-webhook/
+
+Now making the changes in git file we can see the trigger in test3 job in webhook
+
+Environment: 
+
+
+Note
+
+When we make execution or any scripting it gets stored in memory like RAM, similarly in cache and cookies.
+When an application is running there are some conditions where in which the tokens gets stored in Cache and cookies environment
+Reason we open in incognito mode it doesn’t store any cache 
+Basically a cache memory is stored for 8 hours post which it gets deleted so if any changes are made in data base and still not working we usually clear the cache so that the existing data do not override the new data in data base 
+
+
+Delete workspace before build starts: When using this option it usually delete all the cache and cookies and the data so it will not make any issues in the environment 
+
+Use Secret text(s) or files(s): You cannot push a secret into git hub ie eg: if you want to push something like password you cannot do it in got hub bcse git guardian will not allow to push any secrets. In those times we use this method to pass it.
+
+Add timestamps to the Console Output: as suggested in the name it gives the timestamp for the output 
+
+Inspect build log for published build scans: it scans for the builts built  
+
+Terminate a build if it's stuck: If the build is stuck we need to provide a timeout in which it has to terminate to restart 
+
+With Ant: If we need to built anything with external application
+
+
+Build Steps: 
+
+Multiple Options are Available
+
+Execute Windows batch command: If you are hosting on Windows OS we call it as batch scripting its nothing but using power shell
+
+Execute Shell: If we are hosting over Linux OS we use this Build 
+
+Post-Build Actions: 
+
+This is the place we mention the actions to be done post the build it completed, like we need send an email or get a docker in there something like Build is like the upstream job and what has to be executed later the result of the build will be downstream job.
+
+Activity: 
+
+Go to root and cd into temp folder root@jenkins-server:~# cd /tmp/
+Reason to use temp folder is once it restart all the files will be gone and it has all the permissions 
+Now once in the folder create a .sh file 
+Simple script 
+
+#!/bin/bash
+
+echo "Hello, Good Morning. My name is Muniraj"
+echo "And I like $Linux scripting”
+
+Now we will add the Variable
+
+#!/bin/bash
+
+Name="Muniraj"
+Sub="Linux"
+
+echo "Hello, Good Morning. My name is $Name"
+echo "And I like $Sub scripting”
+
+
+Once this is done we are We need to change it dynamically. We cannot use read we need a command line variable or its called as command line arguments.
+
+So we need pass the commands 
+
+Here in the case First parameter is Muniraj and second parameter Name and second id sub
+
+So this is how we use it 
+
+root@jenkins-server:/tmp# ./script.sh Muniraj Linux
+
+Result will be, Because your script ignores the command-line arguments and uses hard-coded variables instead so even if the names are changed the output will be same 
+
+
+Hello, Good Morning. My name is Muniraj
+And I like Linux scripting
+
+Now to execute it we are making change in the script 
+
+#!/bin/bash
+
+Name=$1
+Sub=$2
+
+echo "Hello, Good Morning. My name is $Name"
+echo "And I like $Sub scripting"
+
+Now if we execute it the result will be 
+
+root@jenkins-server:/tmp# ./script.sh 
+
+Hello, Good Morning. My name is 
+And I like  scripting
+
+Now if we give the input as 
+root@jenkins-server:/tmp# ./script.sh Muni Java
+
+Result will be
+
+Hello, Good Morning. My name is Muni
+And I like Java scripting
+
+Now we will get the real path of the shell script and run it in the jenkins
+
+root@jenkins-server:/tmp# realpath script.sh 
+/tmp/script.sh
+
+So we go the Jenkins and in the execute shell place we will paste the link
+
+
+#!/bin/bash
+echo "Hey Print this line"
+/tmp/script.sh 
+
+The output will be 
+
+04:31:17 Hey Print this line
+04:31:17 Hello good morning my name is 
+04:31:17 And I like 
+04:31:17 Finished: SUCCESS
+
+
+Its Blank means its taking in the argument
+
+Now we will add the names after the path 
+
+#!/bin/bash
+echo "Hey Print this line"
+/tmp/script.sh Muniraj Linux
+
+The output will be 
+
+04:33:56 Hey Print this line
+04:33:56 Hello good morning my name is Muniraj
+04:33:56 And I like Linux
+04:33:56 Finished: SUCCESS
+
+Now we can’t be always going to the shell and change it so we have another way to do it now we need parameterisation the argument and how we do it is this 
+
+Check the box This project is parameterised and click the option string parameter
+
+There enter the Name as Name and value as user
+and add another one and its Name is Sub and value is Linux
+in the script add $Name $Sub as well once we save it we will see and change instead of Build now we see Build with Parameters
+
+#!/bin/bash
+echo "Hey Print this line"
+/tmp/script.sh $Name $Sub
+
+Now once we click on Build with Parameters It will ask for Name and Sub and what we provide there will come as out output 
+
+04:46:13 Hey Print this line
+04:46:13 Hello good morning my name is Pooja
+04:46:13 And I like Java
+04:46:13 Finished: SUCCESS
+
+Another example: we add action as an option we use the choice parameter
+
+Script will be 
+
+#!/bin/bash
+echo "Hey Print this line"
+/tmp/script.sh $Name $Sub $action
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Checkin here we can see Name and sub is in typing format since its string but action have dropdown that was given in choice
+
+
+User data for jenkins server:
+
+First we will start with how to use user data while launching the server
+Copy and paste the script in user data and remove the line about jenkins status and paste the command sudo hostname jenkins-server.
+And launch the server.
+Now launch the instance in web and wait for some time for the jenkins script to be completed 
+Now launch the public ip with 8080 and launch jenkis app, and the regular options to start 
+
+Pipeline Projects:
+
+Now we use the Pipeline projects, so usually is the one used in projects
+The main difference you can see in the pipeline column in the page 
+Pipeline in jenkins has something called as DSL pipeline domain specific language, we can find the details in https://www.jenkins.io/doc/book/pipeline/
+Earlier we have 2 types of pipeline, scripted and declarative 
+Coding in devops starts from jenkins 
+Now we write a simple command line in freestyle in the pipeline column   
+
+pipeline{
+    agent any
+    
+    stages{
+        stage('build') {
+            steps{
+                sh '''
+                echo "Hello this is our first pipeline code"
+                '''
+            }
+        }
+    }
+}
+
+so this is how its being setup instead of execute shell in freestyle 
+In execute shell you write #!/bin/bash like shell script but in pipeline we write the code as we need and mention the execution command in pipeline 
+Syntax for Pipeline codes  
+Its starts with 
+pipeline{}
+Followed by 
+agent any 
+Stages : we can have multiple stage so its a a starter for it
+Stage(name of the stage): we give the same of the stage like a headliner what we are doing
+Steps {} : we write the command to be executed in the steps
+
+Note: sh ‘’’ is used execute multiple commands in the steps 
+
+Exercise: 
+
+Command in pipeline 
+pipeline{
+    agent any
+    stages{
+        stage('new command'){
+            steps{
+                sh '''
+                uptime 
+                date 
+                echo "hello world..."
+                '''
+            }
+        }
+    }
+}
+
+
+Now the output is 
+
++ uptime
+ 15:42:25 up 13 min,  0 user,  load average: 0.04, 0.05, 0.05
++ date
+Sun Jan 25 15:42:25 UTC 2026
++ echo hello world...
+hello world…
+
+Now the pipeline is build but we do not see the Stage name new command mentioned anywhere in the output, to see that we need to add a new plugin.
+
+Got to settings > plugins > available plugins > search for pipeline stage view and install it.
+Now go back to the top and check the status you can see the stage name and the logs as well. Helps you to track it.
+
+Now we make some edits to the pipeline we add multiple stages to it. And this is the command 
+
+pipeline{
+    agent any
+    stages{
+        stage('new command'){
+            steps{
+                sh '''
+                uptime 
+                date 
+                echo "hello world..."
+                '''
+            }
+        }
+        stage('pooja'){
+            steps{
+                sh '''
+                uptime 
+                date 
+                echo "hello world...this is pooja"
+                '''
+            }
+        }
+        stage('muni'){
+            steps{
+                sh '''
+                uptime 
+                date 
+                echo "hello world...this is muni"
+                '''
+            }
+        }
+        stage('raj'){
+            steps{
+                sh '''
+                uptime 
+                date 
+                echo "hello world...this is raj"
+                '''
+            }
+        }
+    }
+}
+
+
+Now checking the out put it has to be with all the above 
+
+How we use this on realtime basis is we use multiple stages for multiple sources and destinations 
+
+
+Now we are going to write a jenkins file in git. Follow the steps below 
+
+Open VS code and clone the git repo 
+Now create a new folder called as jenkins_scripts 
+Now create a new file called as Jenkinsfile this is the format with J as caps do not change it 
+Now commit the changes with the message created the first script 
+Go to git-hub and create a new job 
+Pipeline > Definition > Pipeline script from SCM > GIT> repo url > https like from GIT> Mention Branch main > script path is the path for the file in Git hub. Apply and Save 
+Now Build now you can see the stage view and the details 
+Now we can Test poll SCM by enabling it and make the changes to the file add a new stage and see the new build in the next minute 
+To test the web hooks we need to disable the poll scm and enable ti the web hooks 
+Go to GitHub > settings > web hooks > delete the existing one and add a new one http://44.192.96.137:8080/github-webhook/ send me everything 
+Now go to a file in code and change it and commit the changes you can see a new build in the jenkins 
+
+
+Types of Pipeline:
+
+
+1 Basic: here we do the basic things as we mentioned before just one command and execute it 
+
+2 Git checkout : basic syntax goes a the basic pipeline one but the difference is the steps on the steps workspace we enter git url : 'https://github.com/muniraj-git/Git-Test1.git' , branch: 'main’
+
+This works in the key value pair concept where 
+
+Git url : Key 
+https://github.com/muniraj-git/Git-Test1.git : value 
+Branch : key 
+Main : value 
+
+Post that no need to do the same things again need to create a new item give the name scroll down and copy from enter the basic job name and ok. Note only change to be made is the Path of the file. So the new job takes the file from the one we need.
+
+
+3. Build with parameters: A pipeline to with the script what we did earlier to define parameters in basic pipelines. Difference in the script include addition of a line called as parameters after        agent any, ensure parameters p is in small case
+parameters{
+        string(name: 'ENV',defaultValue: 'Prod',description: 'Environment to deploy')
+    }
+
+Post this we need to make edits in the steps as well 
+
+step{
+                echo "Deploying to ${params.ENV} environment"
+            }
+
+${param.ENV} is the way we use to call the values in linux this will call the value what we defined in the Parameters.
+
+Now save and commit and sync the changes in code and go to Jenkins and same as above copy the code from 02-pipeline and just change the path of the file were we have saved the parameters script. And run the build.
+
+So the above one do not gives us a choice it takes us directly to the production environment
+Now we need to add that into the options so we are going to create another file under Build with parameters folder called as Jenkinsfile-choice and make these edits 
+
+parameters{
+        choice(
+            name: 'ENV',
+            choices: ['DEV', 'UAT', 'PROD', 'TEST'],
+            description: 'select the deployment environment'
+        )
+    }
+
+Here it gives us a choice to choose the environment where we need to deploy 
+
+We do an advance search methodology where we use different set of codes where the switch of the environment happens and the environment gets executed. Code is available in the file Jenkinsfile-advance. Refer to that.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+usually when we build a pipeline it will need a lot of servers
+Smoke Test: is used to test the basic and critical functionality of a pipeline so that there is no failures, its done manually by quality team. But as a devops team we need to automate it based on the time requirement
+If an app is very good and big with lot of servers the smoke test will consume a lot of memory(RAM)
+Internally we run the smoke test every 10 mins so if there is failure we check why it is and do the analysis 
+
+Agent Any:
+Master and Worker/slave nodes: 
+
+usually when we have a instance and we have all the environment dump there take an ex we run the smoke test in it 
+And we keep making changes in dev and test environment and then are consuming memory along with the production so the application is slow 
+Now here have a concept called as Master and Slave nodes. Where Jenkins is installed in Master node and we define to which slave node should the deployment has to happen 
+For ex we can have 1 master node > 3 slave nodes one for prod another one for dev and another one for testing so the memory allocations can be done based on the requirements 
+Now coming back to the Jenkins script. Instead of agent any we use the command agent {label ‘node-1’} is this case the deployment will happen in the first node.
+Usually we do not allocate anything in the master node since the app will be running in that instead we deploy all of them in the slave nodes 
+And the reason we do this is work load allocation.
+
+Activity: 
+
+Launch a instance with amazon linux
+After launching we need to install jenkins to it 
+In the browser Jenkins Installation > Linux > redhat > Red Hat Enterprise Linux and derivatives 
+We need to always install Java so go to the column of longtime support and use  sudo yum install fontconfig java-21-openjdk
+If this is not working just type in yum install java-21 this will install Java checking the version java —version we can see the version 
+Then type in sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/rpm-stable/jenkins.repo
+This will create a jenkins repo in the local 
+Then sudo yum upgrade followed by sudo yum install jenkins this will install jenkins.
+Then we will sudo systemctl daemon-reload to reload then we start the jenkins using the command sudo systemctl start jenkins
+Check the status using the command sudo systemctl status jenkins if the service is disabled enter the command [root@ip-172-31-13-53 ~]# sudo systemctl start jenkins
+[root@ip-172-31-13-53 ~]# sudo systemctl enable jenkins
+Now That its installed using the public Ip.8080 we can launch the jenkins server 
+Now build a normal jobs, a basic job and then build now 
+Check the nodes in the manage jenkins column you will see something called as built-in node and followed by the space details
+Jenkins is hosted in this built in node 
+
+
+
+Mandate plugins: pipeline stage view, pipeline, GitHub.
+Now we need similar instances so we go to instance select the existing one under action launch more like this 
+Now shh into the new instance and name the host as test 
+Now sudo su - and then install java into it command yum install java-21 in Amazon linux 
+In Ubuntu we can use the command apt update and then apt install -y openjdk-17-jdk
+Now that java is installed we need a folder called as jenkins in the slave sever so mkdir jenkins and the fill permissions to the folder 
+Now type in ssh-keygen this will generate the key and then click on yes 
+Now cd .ssh folder and ls you will find the keys  Now go to the master server: 
+Cd .ssh and then click on ls -a
+And then type in ssh-keygen enter 
+Now we will have id_rsa.pub key in it 
+
+now cat the public key of master node and paste it into the authorised key of the slave node 
+Command [root@master .ssh]# cat id_rsa.pub copy the key and [root@test .ssh]# vi authorized_keys and paste the key in the bottom of the existing key and save it 
+Now if we try to login to the slave node via master node it will work 
+Commands to it is ssh private ip of the slave node in master node 
+Cd .ssh and then ls you will find the id_RSA the private key cat tat you will get the private key 
+Now we need to call that using jenkins 
+
+
+Jenkins Actions: 
+
+Go to Jenkins > Nodes > New Node > Name the node and select Permanent Agent create 
+Name is Node-2 > Description : Blank > Number of executors : 1 > Remote root directory, we need to get it from slave terminal get the realpath for folder jenkins that is [root@test ~]# realpath jenkins/ which is /root/jenkins 
+Further we see Labels > prod (make sure what is mentioned in the label has to be mentioned in the parameters to be called) > Usage > default > Launch method > login via SSH
+Host > Private Ip of the slave node > 
+Credentials > add > Domain is global credentials > kind : ssh username with private key > Id: Prod > description : prod > username: root > private key will be the Private key of the master node to get that got to cd .ssh ls cat id_rsa in the master node
+Now paste it in the private key column and add It 
+Now in Credentials > root , Host Key Verification Strategy > non verifying verification strategy 
+Click on the slave node and check the log  you an see its successfully connected 
+And all the nodes are in sync 
+
+Similarly create another node as well with the label as test
+
+
+Now we create another activity 
+
+
+Start a new job project 1
+Pipeline from SCM will be GIT we will be not able to connect since the git is not installed in the file node so need to install it using the command yum install git -y
+Once done the error will be out now we need give the branch name and same as earlier 
+Select the gitcheckout file from the git and use it
+And click Build now, now you can see the job is running in master node 
+Now go to vs code and make the change to the script instead of agent any type in  agent { label ‘prod’       } so we see the build happening in prod node   Now change it to    agent { label ‘test’       } Now you can see build happening in test node 
+
+Just to ensure your Master node not to overload with the builds you need to configure it 
+
+Go to nodes and open the master node and configure and click in usage and select only build jobs with label expressions matching this node 
+
+Now create a new job and use a normal script and build now you can see its running in one of the nodes and not the Master because until we specify the label as master it will not consider running in master node.
+
+
+Note: Easy way to remember the steps to create a new node 
+
+Create 3 instances 
+Name 1st as Master and the other 2 as slave1 and slave2
+Now login as root user in all the three servers 
+Install Java-21 and Jenkins in Master sever and Java-21 in the slave servers
+Create ssh key in all of them 
+Now copy the public key of the Master instance to the authorised keys of the slave nodes
+Once that is completed create a folder called as jenkins in both the slave nodes 
+Now create a node in Jenkins for credentials use ssh method and for the host mention the   Public ip of the slave server and Private key of the master server.
+
+
+How to build a simple java project using the pipeline 
+
+
+Maven:
+
+Maven is a used in Java based scripts not others like Python and other languages 
+
+Where and how is Maven used in Devops 
+
+usually we write a script in Git 
+Now that java scrips has to be packaged this is usually done by the developer 
+Now that also has to be automated 
+So usually this has 2 types of files one is jar and war 
+Jar : is a logic based file 
+War : is a web application file 
+
+
+Now when we use maven command on a file which is  
+Command:  mvn clean package -DskipTests
+
+Once you run this command you will see the steps below 
+
+Scans for the projects 
+Build a pom.xml file 
+This will consider all the plugins in the file and download it to a local repository in maven
+It ill create a new repackage as spring boot this is basically the re-placement of the current package 
+
+
+Command to run a java file in local folder is: java -jar target/filename 
+
+This file is created using the above command 
+
+
+****************************************
+
+
+Build Lifecycle: 
+
+It has 3 cycles
+
+Default : It will handle the Project
+Clean : It will keep the work space clean (like clear cache), Like previous build clean
+Site : It will generate documents
+
+
+Commands in Default: 
+
+validate : This is validate the folder/Project structure and the and pom.xml file is present
+Compile : compilation of source code 
+Test : (Unit testing) / Junet frame works 
+Package : it creates the jar/war files based on the above steps
+Verify : make sure it will validate the jar file 
+Install : This command is used to copy or install our jar file into the below mentioned m2 folder
+Deploy : copy the final package available in m2 to a remote repo it will be useful
+
+
+Note: Once we install Git the local repo for it will be .git when we install ssh it will be .ssh similarly when we install maven we will get a local folder called as .m2 this os the local repo for maven 
+
+So basically when we use the command : mav clean install , it does the follows the below steps 
+
+It clears the previous builds 
+And perform all the above mentioned activities like validate, compile, test, package, verify and then the file comes to install stage where the file is stored in the m2 folder.
+
+As it follows the flow of commands we can execute the commands based on the requirements as well if we do mav test it just provides the test results mentioned in the folder 
+As a devops engineer we need to create the pipeline for this
+Now what ever we try in the vs code command will be in the local repo now we need to do it in the git
+
+****************************************
+
+
+We need to call a project and do the compilation 
+Lets say this works in java 11 
+But we have installed java-21 so we need to add multiple java versions and maven in it
+In local we can export but in repo we need to install it. And how to do it we have the code below 
+
+pipeline{
+	agent any
+
+	tools{
+		jdk 'java-11'
+		maven 'maven'
+	}
+
+	stages{
+		stage('git-checkout'){
+			steps{
+				git url : 'https://github.com/muniraj-git/Git-Test1.git' , branch : 'main'
+		    }
+
+			}
+		stage('compile'){
+			steps{
+				sh '''
+					mvn compile
+				'''
+		    }
+			}
+		stage('Building'){
+			steps{
+				sh'''
+					mvn clean install
+				'''
+			}
+		}
+	}
+}
+
+
+This is the command
+
+
+Note: To work with multiple versions of tools like maven and java in jenkins we need a plugin called as Eclipse Temurin installer. Once installed it open the tools column 
+
+Tools > Maven configuration remains default 
+JDK Installations > Add JDK : Name : Java-11 > Install Automatically , drop down install from adoptium.net, select 11.7 from dropdown 
+Now need to install Maven scroll to the bottom you will find maven select 3.9.6 version and apply and save 
+Now run the build you can see based in stage by stage the app getting installed in the first and then we can see the git checkout to the main branch then other 2 not working since its not a java based folder but still its the format for the pipeline and its working successful 
+
+
+Note: All the builds in the jenkins gets stored in the instance you can see it in the path   [root@master ~]# cd /var/lib/jenkins/ and ls you can see a folder called as workspace, there you can see all the jobs for example here I gave the name as example-1 that is available here ls your can find all the files we entered here 
+
+Now if this was a Java folder we would have seen a folder called as webapp and inside that we will see a folder called as target and that will have webapp.war file showing this is a war file so basically this is how a java file is stored 
+
+var>lib>jenkins>workspace>Job_name>webapp>target>webapp.war 
+
+
+
+
+
+
+
+
+
+Docker: 
+
+* Core devops has 2 main components Docker and K8
+Docker is a way of containerisation which is helped to ship the Project 
+We have 2 methods in general one is Virtualisation and Containerisation.
+    Virtualisation:  
+Usually when we have a OS in the system and need an additional OS on it we use the method virtual box so the memory and storage is not used as much as the base OS, ex VM
+Ex we have windows for base OS and on top of it we have a virtual box which has 3 os like ubuntu centos and red hat OS, if the ram is 8 Gb it will get evenly distributed so 2 each for the OS and 2 for the base os this will have performance issues on the system
+This was the previous method
+So when we build an application on top it and do the packaging and try to see the OS Image size will be huge practically not possible for the usage hence we use the method called as Containerisation
+Using Containerisation works like this where infra on top of which we have OS on top of that we will have Container engine which will help in reducing the size
+   * Git hub is used to store the code 
+Docker hub is used to store Images (OS images)
+So an app size of 1 Gb it can be reduced to 100 mb that is done using Docker hub
+  Activity: 
+
+Create a new instance in Amazon linux 
+Login to instance and sudo su - and install Docker command : yum install docker -y
+Now enable it using the command systemctl enable docker 
+And start docker systemctl start docker to start it
+
+
+Doker Architecture: 
+
+Its also called as client-server-architecture 
+
+Client: 
+The commands used in the docker is called as client 
+
+Docker-Host (Server): 
+Is the remaining portion is server (Docker host)
+
+ 
+Any command typed in the client will comminuted to Docker demon it will decide these request and display the action based on it 
+
+
+Now we will start the activity 
+
+
+
+Activity: 
+
+Create a new instance in Amazon linux 
+Login to instance and sudo su - and install Docker command : yum install docker -y
+Now enable it using the command systemctl enable docker.  Note: enable docker is a command used to make sure even if the server restarts the docker will be in the start status. If not using this command it will lead to stop status
+And start docker systemctl start docker to start it. 
+We can check the status using the command systemctl status docker 
+Now we can check the version using the command docker version 
+We will see a column called as Server in the that we can see Engine this is nothing but the base what we mention as container engine in the architecture.
+  Commands 
+
+Docker images: this will show the number of images in the current host [root@dockerserver ~]# docker images REPOSITORY   TAG       IMAGE ID   CREATED   SIZE  backed: Client - docker images > goes to docker demon it will check the images in the current server and will print it there
+
+Ls: will list the directory content,  
+docker images: will list the images present in the host
+
+docker container ls: this will show the number of container in the server 
+
+docker pull or docker image pull ubuntu: this will work like a pull command for git eg  [root@dockerserver ~]# docker pull ubuntu Using default tag: latest latest: Pulling from library/ubuntu a3629ac5b9f4: Pull complete Digest: sha256:cd1dba651b3080c3686ecf4e3c4220f026b521fb76978881737d24f200828b2b Status: Downloaded newer image for ubuntu:latest docker.io/library/ubuntu:latest
+ backend: since its a pull request it will go to the docker hub and from there the end point is called out, which is Pulling from library/ubuntu. Where in docker hub there will be an image for ubuntu and once we pull it it will get installed. This image will from https://hub.docker.com/_/ubuntu
+
+
+docker ps / docker container ls : is the way we use to open the options used to connect to the images, we can use the command docker ps -a to show the hidden files as well
+
+[root@dockerserver ~]# docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+Just like how we use an image from AWS to launch an instance and from there we use ssh or http method to connect to the instance in the same way we use the container option 
+
+
+docker run -it image-id(name of the image): this is a command using which we can create a container using the image we have in the docker. And we are in the container. Once we run this command we can see a container Id created and the name will change automatically 
+
+
+This is used to create a new container using the image available, now here, docker run is to create the container -it is interactive terminal we can give image name or image id
+
+[root@dockerserver ~]# docker run -it 493218ed0f40
+root@cc9afba8a6b3:/#
+
+In the above command cc9afba8a6b3 is the container ID and this is the image id of the ubuntu we installed using the pull command 
+
+If we type in cat /etc/os-release we can see the below output 
+
+root@cc9afba8a6b3:/# cat /etc/os-release
+PRETTY_NAME="Ubuntu 24.04.3 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.3 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+
+
+This says that the name of the OS is ubuntu, so basically we have launched the instance using Amazon linux and in that we installed docker and using docker we pulled ubuntu and created a container based in ubuntu and we are working on it 
+
+
+cntrl+pq: using this command we do a safe exit from the container 
+
+Now if we do a [root@dockerserver ~]# cat /etc/os-release
+NAME="Amazon Linux"
+VERSION="2023"
+ID=“amzn"
+
+So since we are back from container its back to AWS linux from ubuntu 
+
+
+now if we do a docker container ls we can see the container we have created with the details 
+
+[root@dockerserver ~]# docker container ls
+CONTAINER ID   IMAGE          COMMAND       CREATED          STATUS          PORTS     NAMES
+cc9afba8a6b3   493218ed0f40   "/bin/bash"   11 minutes ago   Up 11 minutes             musing_zhukovsky
+
+
+
+Other options 
+
+docker run -it -d image : using this option we can create a container and not enter it . -d is detached mode.  [root@dockerserver ~]# docker run -it -d 493218ed0f40 44be0ebfe9595de9bc4e6056a738836bd61849cb6832871a32ac01686f0a7721 [root@dockerserver ~]# docker ps CONTAINER ID   IMAGE          COMMAND       CREATED          STATUS          PORTS     NAMES 44be0ebfe959   493218ed0f40   "/bin/bash"   6 seconds ago    Up 5 seconds              awesome_williamson cc9afba8a6b3   493218ed0f40   "/bin/bash"   22 minutes ago   Up 22 minutes             musing_zhukovsky 
+docker run -it image -d —name coustom_name image : using this command we can name the container as per our wish
+
+[root@dockerserver ~]# docker run -it -d --name c1 493218ed0f40
+a82d5bc9fc96d4adccde15777e669aac271fd2fa9cbc83d0c57c68ace81db12e
+
+CONTAINER ID   IMAGE          COMMAND       CREATED              STATUS              PORTS     NAMES
+a82d5bc9fc96   493218ed0f40   "/bin/bash"   9 seconds ago        Up 8 seconds                  c1
+44be0ebfe959   493218ed0f40   "/bin/bash"   About a minute ago   Up About a minute             awesome_williamson
+cc9afba8a6b3   493218ed0f40   "/bin/bash"   24 minutes ago       Up 24 minutes                 musing_zhukovsky
+
+
+
+Any application running will be based on the script running in the background 
+Lets say we have 2 images one is application image like nginx and os image ubuntu
+In application image process will be running in the background if do a docker run -it application-image, the process in the image will be running we will not be able to get into the container even if it gets created 
+In this case if use docker run -it -d application-image we can see the demon get detached and the container gets created 
+Now whenever there is a container running it will be in docker ps if its stopped we can see it in ps -a 
+Now how to stop the container we use the command docker stop container-name. To check the Status of that we need to use the command docker ps -a
+
+[root@dockerserver ~]# docker stop musing_zhukovsky
+musing_zhukovsky
+[root@dockerserver ~]# docker ps -a
+CONTAINER ID   IMAGE          COMMAND       CREATED          STATUS                       PORTS     NAMES
+a82d5bc9fc96   493218ed0f40   "/bin/bash"   30 minutes ago   Up 30 minutes                          c1
+44be0ebfe959   493218ed0f40   "/bin/bash"   32 minutes ago   Up 32 minutes                          awesome_williamson
+cc9afba8a6b3   493218ed0f40   "/bin/bash"   54 minutes ago   Exited (137) 4 seconds ago             musing_zhukovsky
+
+You can use kill instead of stop in this case it will not be a concerned stop like a forced stop it will terminate immediately 
+Now If we need to remove a container we use the command docker rm container-name
+[root@dockerserver ~]# docker kill awesome_williamson
+awesome_williamson CONTAINER ID   IMAGE          COMMAND       CREATED          STATUS                       PORTS     NAMES
+a82d5bc9fc96   493218ed0f40   "/bin/bash"   34 minutes ago   Up 34 minutes                          c1
+cc9afba8a6b3   493218ed0f40   "/bin/bash"   58 minutes ago   Exited (137) 3 minutes ago             musing_zhukovsky
+
+
+So the will be removed 
+
+
+* How to login to a container command is docker attach container-name 
+
+[root@dockerserver ~]# docker attach c1
+root@a82d5bc9fc96:/# read escape sequence  * How to login to the application container: docker exec -it containerID /bin/bash  
+*********************** 
+To remove all the containers [root@dockerserver ~]# docker rm -f $(docker ps -aq)
+To remove all the images : [root@dockerserver ~]# docker system prune -a
+
+
+***********************
+
+Now we write an application and test it 
+
+Open terminal and install docker 
+Then open a text file named index.html using the command vi index.html
+Go to https://www.w3schools.com/howto/howto_css_responsive_form.asp and use the commands first css followed by the html commands paste it in the file 
+Note: CSS code has to be pasted bw <style> </style> and then paste the html commands 
+Now we need to build this code to the container 
+Now we need to build the image for that open another file called as Dockerfile so it will be vi.Dockerfile   FROM ubuntu:22.04
+RUN apt-get update && \
+    apt-get install -y apache2 && \
+    apt-get clean
+
+COPY index.html /var/www/html/index.html
+EXPOSE 80 
+Now in that we need to mention some Instructions in that we will describe it down 
+Now we need to build the image the command for that will be  docker build -t my-custom:1 .  Where -t stands for tag note: this is similar to pulling the image earlier the pull command is to pull the existing image from docker hub where as docker build -t is to build the image.
+Now the image is created we will use the below command to test It  docker run -it -d -p 80:80 my-custom:1
+Now once this is done a container will be created 
+Now we need to get into the container using the command: docker exec -it containerid /bin/bash
+Once in we need to start the apache there using the command apachectl start
+Now the website will be working 
+We did not build the application directly on the instance. The instance runs Docker. We created a Docker image that contains the application and all its dependencies. A container is created from that image, and the application runs inside the container on the instance. The image contains all the information required to run the application.     Correct understanding
+You did NOT build the app directly on the instance
+The instance hosts Docker (Docker Engine)
+You built a Docker image using Docker (usually from a Dockerfile)
+The application is inside the image
+A container is a running instance of that image
+The container runs on the instance and hosts the app 
+
+
+[root@docker-server ~]# vi index.html
+[root@docker-server ~]# ls
+index.html
+[root@docker-server ~]# vi Dockerfile
+[root@docker-server ~]# docker build -t my-coustom:1 .
+[+] Building 20.3s (8/8) FINISHED                                                                                                       docker:default
+ => [internal] load build definition from Dockerfile                                                                                              0.0s
+ => => transferring dockerfile: 247B                                                                                                              0.0s
+ => [internal] load metadata for docker.io/library/ubuntu:22.04                                                                                   0.4s
+ => [internal] load .dockerignore                                                                                                                 0.0s
+ => => transferring context: 2B                                                                                                                   0.0s
+ => [1/3] FROM docker.io/library/ubuntu:22.04@sha256:c7eb020043d8fc2ae0793fb35a37bff1cf33f156d4d4b12ccc7f3ef8706c38b1                             1.8s
+ => => resolve docker.io/library/ubuntu:22.04@sha256:c7eb020043d8fc2ae0793fb35a37bff1cf33f156d4d4b12ccc7f3ef8706c38b1                             0.0s
+ => => sha256:c7eb020043d8fc2ae0793fb35a37bff1cf33f156d4d4b12ccc7f3ef8706c38b1 6.69kB / 6.69kB                                                    0.0s
+ => => sha256:34577a83cd7a8f1e55f6eb173fd9bb70c16127a83d6bf06f56f6b1fff9e406b9 424B / 424B                                                        0.0s
+ => => sha256:65c77cbc27c2640de4c99ed5cfe6b689b192f81745a36032b50e2407b073ff22 2.30kB / 2.30kB                                                    0.0s
+ => => sha256:6f4ebca3e823b18dac366f72e537b1772bc3522a5c7ae299d6491fb17378410e 29.54MB / 29.54MB                                                  0.4s
+ => => extracting sha256:6f4ebca3e823b18dac366f72e537b1772bc3522a5c7ae299d6491fb17378410e                                                         1.2s
+ => [internal] load build context                                                                                                                 0.0s
+ => => transferring context: 2.61kB                                                                                                               0.0s
+ => [2/3] RUN apt-get update &&     apt-get install -y apache2 &&     apt-get clean                                                              16.5s
+ => [3/3] COPY index.html /var/www/html/index.html                                                                                                0.2s
+ => exporting to image                                                                                                                            1.3s 
+ => => exporting layers                                                                                                                           1.3s 
+ => => writing image sha256:4853c334526b4e8f436bfd6929dfb56955345028e582d0a7aa58ddb40d28da0e                                                      0.0s 
+ => => naming to docker.io/library/my-coustom:1                                                                                                   0.0s 
+[root@docker-server ~]# docker images
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+my-coustom   1         4853c334526b   48 seconds ago   259MB
+[root@docker-server ~]# docker run -it -d -p 80:80 my-coustom:1
+5f8a5812ec8abf9e05cf18b268d818e87a0099ad83263377e1dc15c203d59100
+[root@docker-server ~]# docker ps
+CONTAINER ID   IMAGE          COMMAND       CREATED         STATUS         PORTS                               NAMES
+5f8a5812ec8a   my-coustom:1   "/bin/bash"   8 seconds ago   Up 7 seconds   0.0.0.0:80->80/tcp, :::80->80/tcp   cool_chaum
+[root@docker-server ~]# docker exec -it 5f8a5812ec8a /bin/bash
+root@5f8a5812ec8a:/# apachectl start
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+root@5f8a5812ec8a:/# 
+
+
+Now we see the explanation on how did we dockerized the image that is the Dockerfile we created   Note: all the instructions has to be mentioned in the capital letters and the name of the file has to be Dockerfile   FROM ubuntu:22.04 : Base image via which we use are hosting the image
+
+ RUN apt-get update && \
+    apt-get install -y apache2 && \  : This will install the apache in the ubuntu OS 
+
+So when we build the image this command will run so the empty ubuntu image will install apache as well 
+
+ COPY index.html /var/www/html/index.html:  So this command copy the local file we have which is index.html to the location so basically from local to the docker html space so it will get executed.
+EXPOSE 80: A port has to be exposed in which the application has to run we need to define it hence the command has to be mentioned.  
+
+
+
+
+********************************
+
+Mainly used Instructions in Dockerfile 
+
+FROM
+ADD
+COPY
+ENV
+RUN
+WORKDIR
+ENTRYPOINT
+CMD
+
+
+FROM: Its used to mention the base OS used to launch the application
+
+RUN: Is used to install the applications we need in the OS for the application 
+
+COPY: is used to copy the code to the Dockerfile from the source file 
+
+EXPOSE: to mention which application to be hosted in which ip 
+
+ADD: can automatically extract local tar archives (like .tar or .tar.gz) when copying them into the image. However, it does not extract ZIP files, and when a URL is provided, ADD only downloads the file without extracting or converting it.
+
+
+
+Docker Revision:
+
+Docker and K8 is the core of Devops 
+Virtualisation and containerisation is the 2 ways to ship a project 
+Cons of Virtualisation is because the size is big since we are taking in the whole OS for Bundling with the application to Ship it with, where as in Docker Containerisation we will not use the whole OS for bundling where as we use just the basis and the basic lib and etc required for the application
+We use container engine which is Docker on top of OS.
+Gitub saves code and Docker saves Images 
+
+Docker Architecture: 
+
+When we do Git clone <repo name> once we do this we will clone it similar way we have an architecture for Docker
+It is also called as Client Server Architecture   Client: All the commands we use to communicate to Docker is called as Clients Docker Host: Is our server, which includes Docker daemon, containers, images    We have another set called as Registry which contains all images 
+
+Any commands we type it goes to Docker Daemon so basically Client will communicate to Docker daemon and it will decide what command to execute 
+Registry has all the images which is OS image and application image as well.
+
+
+Now we are doing an activity 
+
+Lauch an instance 
+Check for docker 
+Install Docker using the command yum install docker -y
+Now we need to enable docker, why we enable docker is because even if the server is restarted the docker should be in start status, without enabling if we start the docker and the server is restarted we will see that Docker will be stopped when the server restarts 
+Command to Enable systemctl enable docker 
+Now we need to start the docker using the command systemctl start docker 
+Use the command docker version to see the version there we can see 2 options one is Client and Engine 
+Engine is the Container engine we host on top on operating system which is responsible to all the segregation and isolation 
+Client is responsible to commands 
+
+
+
+Now we see the commands 
+
+Docker images: will give the list of images in the docker. Like ls works in linux in listing the content in directory this command will list the images in the host
+
+[root@dockerhost ~]# docker images
+REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
+
+Now once we enter the command the Client will communicate with the docker daemon to show the images in the host and thus it will print the same 
+
+Docker container ls: will list the containers in the host
+
+[root@dockerhost ~]# docker container ls
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+
+Since no images we will ask the docker to pull an image ie now we are downloading or puling the ubuntu image using the below command 
+
+docker pull ubuntu: This will download the ubuntu image from the library 
+
+[root@dockerhost ~]# docker pull ubuntu
+Using default tag: latest
+latest: Pulling from library/ubuntu
+b40150c1c271: Pull complete 
+Digest: sha256:c4a8d5503dfb2a3eb8ab5f807da5bc69a85730fb49b5cfca2330194ebcc41c7b
+Status: Downloaded newer image for ubuntu:latest
+docker.io/library/ubuntu:latest
+
+
+Now the detailing of this command and how it worked 
+
+Once we entered the command docker pull ubuntu the daemon fetched it from the endpoint from docker hub and its mentioned as the link in the last
+
+So basically here the work of the daemon was to get the command from Client and go to the docker hub and get that ubuntu to the host
+
+Just Like how we use an AMI and launch the instance similarly using the image we will go into a container 
+
+Docker container or docker ps or docker ps -a: All the commands list out the containers in the host -a works like ls -a showing the hidden files 
+
+
+Now we are creating a container using the image we have command is docker run -it image id
+
+
+[root@dockerhost ~]# docker images
+REPOSITORY   TAG       IMAGE ID       CREATED      SIZE
+ubuntu       latest    0b1ebe5dd426   6 days ago   78.1MB
+
+[root@dockerhost ~]# docker run -it 0b1ebe5dd426
+root@fadb4aa8368e:/# 
+
+Note: once we create a container using this command you automatically go into the container from the host that you are in root@fadb4aa8368e:/#  from [root@dockerhost ~] its like once the container is created you are logged into it 
+
+
+So basically in Amazon linux virtual machine I have downloaded an ubuntu image using which I have created a container and am inside of it 
+
+If we do root@fadb4aa8368e:/# cat /etc/os-release  we will see the os status there it will be mentioned as ubuntu no amazon linux 
+
+Now we need to do a safe exit we can click on esc but not safe do it we need to press control +pq
+
+
+Now we will pull another image called as nginx this is an application image so once done we need to create another container using it using the command 
+
+We are creating the container but we are not going into the container
+
+docker run -it -d -p 80:80 image_ID
+
+So why are we doing this  * docker run is to create a container from the image and -it stands for interactive terminal -p is to define the port name and image_ID from which we are creating the container -d is used to because the container goes to the detached mode so we will create the container but will not be into it 
+
+Now we will create another one using -d but not defining the port 
+
+[root@dockerhost ~]# docker run -it -d 0b1ebe5dd426
+f676c2690ccd9cec58de3b1c4610d3574399a904e80377b1ca951b8112c7c839
+[root@dockerhost ~]# docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                               NAMES
+f676c2690ccd   0b1ebe5dd426   "/bin/bash"              4 seconds ago    Up 3 seconds                                        elated_euclid
+
+Here if you see the name of the container is random to make it as wish we need to add another command which is 
+
+
+[root@dockerhost ~]# docker run -it -d --name c1 0b1ebe5dd426
+5e8638e41ddf80e199f95ebc56401cb7cc1a202acd34982fdd139e4e9318c1f3
+[root@dockerhost ~]# docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED              STATUS              PORTS                               NAMES
+5e8638e41ddf   0b1ebe5dd426   "/bin/bash"              4 seconds ago        Up 3 seconds                                            c1
+
+
+So basically when we add —name name_of_container after -d it will take the name we use.
+
+Note: you cannot use the same name twice because it should be unique 
+
+
+How to stop a container we need to use the command docker stop container_name and to kill we will use the command docker kill container_name, and to remove we use docker rm container_name
+
+[root@dockerhost ~]# docker stop c3
+c3 [root@dockerhost ~]# docker kill c2
+c2
+[root@dockerhost ~]# docker rm c3
+c3
+
+How to get into a container we use the command docker attach container_name 
+
+[root@dockerhost ~]# docker attach upbeat_yalow
+root@fadb4aa8368e:/# 
+
+Note: we can go into only OS image using the above command 
+
+Command to login to application image is docker exec -it container_ID /bin/bash
+
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS     NAMES
+7f0fc00794c6   a716c9c12c38   "/docker-entrypoint.…"   6 seconds ago   Up 6 seconds   80/tcp    competent_panini
+[root@dockerhost ~]# docker exec -it 7f0fc00794c6 /bin/bash
+
+Enter the container name not the image name.
+
+******************************** ******************************** ********************************
+
+
+Activity: 
+
+Now that we know how to pull an existing image now we will create a custom image
+
+First launch the instance and login as root user 
+Install, enable, start the Docker 
+Then open a file index.html and copy the registration form from https://www.w3schools.com/howto/howto_css_responsive_form.asp
+Now that is saved so we have a file with the details which is our source code 
+We need to write a Dockerfile, so open vi editor with the file name as Dockerfile and type these  FROM ubuntu:22.04
+RUN apt-get update && \
+    apt-get install apache2 -y && \
+    apt-get clean
+COPY index.html /var/www/html/index.html
+Now that’s done save it 
+Build a custom image using the command docker build -t my-custom:1 .
+This command will build an image 
+docker build -t my-custom:1 .
+│      │      │                     │
+│      │      │                     └── Build context = current directory
+│      │      └── Image name + tag
+│      └── Build an image
+└── Docker command
+Now That we have an image will build a container from that image using the command mention below docker run -it -d -p 80:80 my-custom:1
+Once done we have a container do docker ps we will be able to see it 
+But that container is built we need to go into the container we can either use the command docker attach b3cf889c8daf(container name) or  docker exec -it b3cf889c8daf /bin/bash
+Doing this we will be in the container 
+We need to start the Apache2 to execute the commands so to do that we have the command apache2ctl start 
+Now open the public IP we can see the form 
+If you use the command apache2ctl stop it will go away then start it again using apache2ctl start
+The process of taking our application code, creating a Dockerfile, building a Docker image, and finally running it as a container is called **Dockerisation**.
+So Now will breakdown the Dockerfile 
+
+Instructions of the Dockerfile 
+
+First the name of the file always have to be Dockerfile 
+And the commands what we used inside like FROM, RUN etc all these are called as Instructions and these have to be in CAPITAL letters 
+
+
+FROM: Just like we need a base AMI when launching an EC2 instance, a Dockerfile needs a base image to start with. We specify the base image using the FROM instruction.
+For example:
+FROM ubuntu:22.04
+This tells Docker to use the Ubuntu 22.04 image as the base image for building our custom image. We can then install the required applications, libraries, dependencies, and configuration on top of this base image.
+Note: This is similar to customizing an AMI. In AWS, we can start with a base AMI and customize it with the software and configuration we need. Similarly, in Docker, we select a base image using FROM and then use instructions such as RUN, COPY, EXPOSE, and CMD to build our customized Docker image.
+
+
+RUN: The base OS image may not contain all the libraries, packages, or applications required to run our application. We use the `RUN` instruction to execute commands during the image build process and install or configure everything our application needs.
+
+
+COPY: We use the COPY instruction to copy our application source code or other required files from the build context into a specific location inside the Docker image.
+For example:
+COPY index.html /var/www/html/index.html
+This copies our index.html file into Apache's web directory inside the image.
+
+
+EXPOSE: We use the EXPOSE instruction to document the port on which the application inside the container is expected to listen.
+For example:
+EXPOSE 80
+This indicates that the application is expected to listen on port 80 inside the container.
+
+
+Now we will see the other instructions as well to do that we will perform an activity.
+
+New directory and create a new docker file name as Dockerfile 
+And vi and mention all the instructions and comment out all of them and we will start using one by one 
+And a index.html file with content this is to test
+Open docker file and type in below Instructions  #FROM
+#RUN
+#COPY
+#ADD
+#ENV
+#WORKDIR
+#ENTRYPOINT
+#CMD
+
+
+FROM: We will create one custom image and pull one image and compare the size and we wlll see the difference 
+
+Docker file content:  FROM ubutu:22.04
+#RUN
+#COPY
+#ADD
+
+And we build an custom image using docker build -t muni:1 .
+And we create another image using the command docker image pull ubutu:22.04
+
+Now checking the both the images w see both have same size because we see both are just ubuntu image so no matter its custom or built in image the size is same
+
+[root@admin instructions]# docker images
+REPOSITORY   TAG       IMAGE ID       CREATED             SIZE
+my-custom    1         d78d3b62b300   About an hour ago   274MB
+muni         1         a57bc965dcc6   13 days ago         78.1MB
+ubuntu       22.04     bf7f4568d957   13 days ago         78.1MB
+
+
+RUN: We use run to run the linux command to install and everyhintg so here we do that and we see the size of the newly built image and muni:2 has increased
+
+FROM ubuntu:22.04
+RUN apt-get update && \
+    apt-get install apache2 -y && \
+    apt-get clean
+#COPY
+#ADD
+#ENV
+#WORKDIR
+#ENTRYPOINT
+#CMD
+
+
+muni         2         c0d90c5cc8c3   About an hour ago   274MB
+
+
+
+Additional Points for COPY and Host Port Mapping:
+
+* We first create an index.html file and add the content:
+"this is to test"
+* Using the Dockerfile COPY instruction, we copy this file into the Apache web-server location inside the image.
+
+FROM ubuntu:22.04
+
+RUN apt-get update && \
+    apt-get install apache2 -y && \
+    apt-get clean
+
+COPY index.html /var/www/html/index.html
+
+EXPOSE 80
+
+# ADD
+# ENV
+# WORKDIR
+# ENTRYPOINT
+# CMD
+* The COPY instruction places index.html inside Apache's document root. Apache can then serve this file when it is running. Host Port Method
+If we run multiple containers, we cannot map the same host port to multiple containers at the same time.
+For example, if port 80 on the EC2 host is already being used by another container, we cannot use host port 80 again for another container.
+Therefore, we use a different host port, while keeping Apache's container port as 80.
+For example:
+9001:80
+
+Here:
+9001 = Host/EC2 port
+80 = Container port where Apache is listening
+So the traffic flow is:
+EC2 Host Port 9001 → Docker → Container Port 80 → Apache → index.html
+* After creating the container with this port mapping, the EC2 Security Group must allow inbound TCP port 9001 from the required source.
+* Inside the container, we then ensure curl is installed, start Apache, and test the webpage.
+When we access the EC2 public IP using port 9001, the request is forwarded to port 80 inside the container, where Apache serves our index.html page.
+* The result displayed is:
+"this is to test"
+* Important Point
+EXPOSE 80 only indicates that the application inside the container uses port 80. It does not publish the port to the EC2 host.
+The actual host-to-container connection is created through the host port mapping, such as:
+9001 → 80
+
+
+ADD: 
+
+To understand ADD will compare it with the COPY command 
+Will create a file called a main.py and will mention print(“Hello World”)
+First will add another COPY command in the Dockerfile which is  COPY main.pt /opt
+So this is to copy main.py to opt folder 
+Now we will create another image called muni:6 using docker build -t muni:6 .
+Once this is created will create a container from the muni:6 image and login to the container, once done go to opt folder you will see main.py file there and if we cat to it we can see the content hello world | [root@admin instructions]# docker build -t muni:6 . [root@admin instructions]# docker run -it -d --name c6 -p 9001 muni:6
+[root@admin instructions]# docker exec -it c6 /bin/bash
+root@e5027d7bc58f:/# cd /opt/
+root@e5027d7bc58f:/opt# ls
+main.py
+root@e5027d7bc58f:/opt# cat main.py 
+print("Hello World”)
+Now this is what copy does 
+Now we will take a zip file and use copy command on it 
+Go to the page https://httpd.apache.org/download.cgi and copy the Source: httpd-2.4.68.tar.gz [ PGP ] [ SHA256 ] [ SHA512 ] the it has to be copied as right click and copy link address 
+Now exit the container and use wget https://dlcdn.apache.org/httpd/httpd-2.4.68.tar.gz and enter 
+Once we do it and do ls we will see 4 files 
+[root@admin instructions]# ls
+Dockerfile  httpd-2.4.68.tar.gz  index.html  main.py
+Here we see its downloaded as zip file 
+Now using copy command will paste the zip file to /opt folder using the command  COPY httpd-2.4.68.tar.gz /opt/
+Now we need to create another image as muni:7 and a container out of it as c7 now go into the container and go to opt folder you can see the zip file is coped as a zip file along with the main.py file
+[root@admin instructions]# docker build -t muni:7 . [root@admin instructions]# docker run -it -d --name c7 -p 9002 muni:7 [root@admin instructions]# docker exec -it c7 /bin/bash root@a46b6646a098:/# cd /opt/ root@a46b6646a098:/opt# ls httpd-2.4.68.tar.gz  main.py 
+So basically when we copy a file be it a normal or zip file it is coped exactly the same in copy command 
+
+
+
+Now we will see who the changes happen if we use ADD command instead
+
+We will comment out the copy commands and use the same in ADD and will add another one in ADD command 
+We will copy TOMCAT zip file installation file and copy that to opt folder so the docker file will look like this  FROM ubuntu:22.04
+RUN apt-get update && \
+    apt-get install apache2 -y && \
+    apt-get clean
+COPY index.html /var/www/html/index.html
+#COPY main.py /opt
+#COPY httpd-2.4.68.tar.gz /opt/
+EXPOSE 80
+ADD main.py /opt/
+ADD httpd-2.4.68.tar.gz /opt/
+ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.122/bin/apache-tomcat-9.0.122.tar.gz /opt/
+#ENV
+#WORKDIR
+#ENTRYPOINT
+#CMD
+
+Now we are doing the same thing we did using copy instruction only difference us we are adding the tomcat installation also into opt folder 
+Once done we will create an image and a container from the image then will login to the container and then will go to opt folder there we can see the list which will be   
+[root@admin instructions]# docker build -t muni:8 . [root@admin instructions]# docker run -it -d --name c8 -p 9003:80 muni:8 [root@admin instructions]# docker exec -it c8 /bin/bash root@6ecdc8062792:/# cd opt/ root@6ecdc8062792:/opt# ls apache-tomcat-9.0.122.tar.gz  httpd-2.4.68  main.py
+So Basically what we can see is the zip file of Apache installation is extracted as a folder meanwhile the http link to install the tomcat is converted to zip file 
+This explains that ADD unlike COPY will extract the file not just copy it 
+
+
+ADD behavior
+
+1. Local .tar archive → ADD can extract it
+For example:
+httpd-2.4.68.tar.gz → using ADD → extracted into a folder
+
+2. HTTP/HTTPS URL → ADD downloads the file
+If you give ADD a Tomcat URL ending in .tar.gz, Docker downloads it and places the downloaded file in the destination.
+It does not automatically mean it will extract the URL download.
+
+Local tar archive + ADD → can extract
+HTTP/HTTPS URL + ADD → downloads the file
+Therefore, ADD does not create a ZIP file from an HTTP link. It downloads whatever file the URL provides.
+
+ENV: This is to declare the environment variable for example if I give ENV user=muni and go and give echo$user it will give muni not much important  ENV is used to define environment variables inside the Docker image/container.
+For example, if we define:
+USER = muni
+then inside the container, when we reference that environment variable, it returns:
+muni
+So:
+ENV = Used to store configuration values or variables that applications can use.
+
+CMD: 
+
+We use CMD in simple terms if we need to make any manual changes like starting an application or a service from logging in the container we can ad that command in the CMD instruction so that it will execute there 
+
+Eg: 
+
+This is our now Dockerfile we are adding CMD [“apache2ctl","-D","FOREGROUND"] and commenting out some instructions.  FROM ubuntu:22.04
+RUN apt-get update && \
+    apt-get install apache2 -y && \
+    apt-get clean
+COPY index.html /var/www/html/index.html
+#COPY main.py /opt
+#COPY httpd-2.4.68.tar.gz /opt/
+EXPOSE 80
+#ADD main.py /opt/
+#ADD httpd-2.4.68.tar.gz /opt/
+#ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.122/bin/apache-tomcat-9.0.122.tar.gz /opt/
+CMD ["apache2ctl","-D","FOREGROUND"]
+#ENV
+#WORKDIR
+#ENTRYPOINT
+
+Now we will do the same will create a image from this Dockerfile and then create a container from it then we no need to login to the container to start the apache, we will expose it to a port and can see that working 
+[root@admin instructions]# docker build -t muni:9 . [root@admin instructions]# docker run -it -d --name c9 -p 9009:80 muni:9
+Doing this we can see the page this is to test 
+CMD defines the default command that Docker should execute when a container starts.
+
+
+
+******************************** ******************************** ********************************
+
+Note: If you need to dockerize a image and then if you need to push that to the GitHub we cannot do it we have 2 block 
+We have to remove pythonclass-py-3.12 and ned to remove .env file in these case we can do it by creating a file called as .gitignore 
+Here after creating this file we need to enter the file names that not be included in the git push 
+Save git add and check the git status we can see with the files not part of the stage then we can push
+
+
+Why we don’t push both of the pythonclass-py-3.12 and .env. because .env has all the tokens and pythonclass-py-3.12 has lot of libraries 
+
+
+Dockerized Python Application — Files to Exclude from GitHub
+When we dockerize a Python application and want to push the project to GitHub, we should not push certain files/directories.
+The two common things we need to exclude are:
+.env
+Python virtual environment directory such as pythonclass-py-3.12
+
+1. Why should we not push .env?
+The .env file may contain sensitive information, such as:
+API tokens
+Access keys
+Passwords
+Database credentials
+Secret keys
+Example:
+AWS_ACCESS_KEY_ID=xxxx
+AWS_SECRET_ACCESS_KEY=xxxx
+DB_PASSWORD=xxxx
+API_TOKEN=xxxx
+Therefore:
+.env
+↓
+Contains secrets
+↓
+:x: Do NOT push to GitHub
+
+2. Why should we not push pythonclass-py-3.12?
+pythonclass-py-3.12 is a Python virtual environment directory.
+It can contain:
+Python packages
+Libraries
+Executable files
+Supporting files
+It can become very large and is unnecessary to store in GitHub.
+Instead of pushing the complete virtual environment, we normally create a:
+requirements.txt
+This file contains the list of Python libraries required by the application.
+For example:
+flask
+requests
+boto3
+Another developer can then recreate the environment using:
+python3 -m venv pythonclass-py-3.12
+source pythonclass-py-3.12/bin/activate
+pip install -r requirements.txt
+Therefore:
+Virtual environment
+↓
+Contains installed libraries/files
+↓
+:x: Do NOT push
+
+requirements.txt
+↓
+Contains required library list
+↓
+:white_check_mark: Push to GitHub
+
+3. Using .gitignore
+To tell Git which files/directories should not be included in the Git repository, we create a file called:
+.gitignore
+Example:
+.env
+pythonclass-py-3.12/
+This tells Git:
+Ignore the .env file and the pythonclass-py-3.12 directory.
+
+4. Check the Git Status
+After creating .gitignore, run:
+git add .
+Then:
+git status
+The files listed in .gitignore will not be staged.
+For example:
+app.py
+Dockerfile
+requirements.txt
+.gitignore
+may be staged, while:
+.env
+pythonclass-py-3.12/
+are ignored.
+
+5. Important Point
+.gitignore works mainly for files that have not already been tracked by Git.
+If .env was already committed previously, adding it to .gitignore does not automatically remove it from Git tracking.
+
+Final Concept
+Python Application
+       ↓
+   Dockerize
+       ↓
+   Git Repository
+       ↓
+┌─────────────────────────────┐
+│ Push to GitHub               │
+│                             │
+│ app.py              :white_check_mark:       │
+│ Dockerfile          :white_check_mark:       │
+│ requirements.txt    :white_check_mark:       │
+│ .gitignore          :white_check_mark:       │
+│                             │
+│ .env                :x:       │
+│ pythonclass-py-3.12 :x:       │
+└─────────────────────────────┘
+Remember
+.env → Don't push because it may contain secrets.
+Virtual environment → Don't push because it contains installed packages/files and can be recreated.
+requirements.txt → Push this because it tells others which Python packages are required.
+.gitignore → Tells Git which files/directories to ignore.
+
+******************************** ******************************** ********************************
+
+Activity:-
+
+Now we integrate Github, Jenkins, Docker, Dockerhub and build a project 
+Developer will write the code and Devops engineer will start with writing a Jenkins file and Dockerfile and Push it to the Github 
+Now we need to Configure both the files to Jenkins and Jenkins will connect to docker create a custom image 
+Here we will create another container from jenkins to test it 
+Then finally will push the custom image to Docker hub 
+So at the final step when we expose the application which is when we mention the IP address of the port we should be able to see the application that is the final step
+ 
+
